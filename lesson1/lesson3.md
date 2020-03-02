@@ -76,19 +76,19 @@ fields:
  	  type: select
  		label: 是否招投标
  		options:
- 		 - label: 已公开招投标
-       value: 已公开招投标
-     - label: 已邀请招投标
-       value: 已邀请招投标
-     - label: 已询价比价
- 			 value: 已询价比价
-     - label: 无需招投标
-       value: 无需招投标
+ 		  - label: 已公开招投标
+        value: 已公开招投标
+      - label: 已邀请招投标
+        value: 已邀请招投标
+      - label: 已询价比价
+ 			  value: 已询价比价
+      - label: 无需招投标
+        value: 无需招投标
     allowedValues:
-     - 已公开招投标
-     - 已邀请招投标
-     - 已询价比价
-     - 无需招投标
+      - 已公开招投标
+      - 已邀请招投标
+      - 已询价比价
+      - 无需招投标
   bop:
  	 type: select
    label: 收支类别
