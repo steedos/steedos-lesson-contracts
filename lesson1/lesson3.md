@@ -29,23 +29,23 @@ fields:
     sortable: true
     filterable: true
   company_id:
- 		label: 我方单位
- 		required: true
- 		omit: false
+    label: 我方单位
+    required: true
+    omit: false
     hidden: false
     sortable: true
     type: lookup
     relatedList: true
     reference_to: company
     create: false
-	othercompany:
+  othercompany:
     type: lookup
     relatedList: true
     label: 签约对象
     searchable: true
     reference_to: accounts
     multiple: true
- 		filters: [["status", "eq", "2"]]
+    filters: [["status", "eq", "2"]]
     create: false
   project:
     type: lookup
