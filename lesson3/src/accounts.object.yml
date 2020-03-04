@@ -1,17 +1,14 @@
-# lesson2   创建业务对象
-
-## 创建 业务伙伴  object
-
-在src项目源码中创建一个名为accounts.object.yml文件，
-开头配置以下内容：
-```bash
-name: contracts
-lable: 业务伙伴
-icon: cantract
-```
-## 添加字段：名称、电话、邮箱...
-配置相关字段:
-```bash
+name: accounts
+label: 业务伙伴
+icon: account
+enable_files: true
+enable_search: true
+enable_tasks: true
+enable_events: true
+enable_notes: false
+enable_api: true
+enable_share: true
+enable_chatter: true
 fields:
   name:
     label: 名称
@@ -65,10 +62,6 @@ fields:
     type: textarea
     is_wide: true
     name: description
- ```
-
-## 设置视图：所有业务伙伴
-```bash
 list_views:
   all:
     label: 所有业务伙伴
@@ -78,39 +71,34 @@ list_views:
       - owner
       - modified
     filter_scope: space
-```
-
-## 定义权限：所有人都能增删改
-```bash
+  recent:
+    label: 最近查看
+    columns:
+      - name
+      - priority
+      - owner
+      - modified
+    filter_scope: space
+  mine:
+    label: 我的业务伙伴
+    columns:
+      - name
+      - priority
+      - owner
+      - modified
+    filter_scope: mine
 permission_set:
-	user:
-		allowCreate: true
-		allowDelete: true
-		allowEdit: true
-		allowRead: true
-		modifyAllRecords: false
-		viewAllRecords: true
-	admin:
-		allowCreate: true
-		allowDelete: true
-		allowEdit: true
-		allowRead: true
-		modifyAllRecords: true
-		viewAllRecords: true
-```
-
-## 在 app中配置新创建的业务对象
-```bash
-objects: 
-  - instances
-  - accounts
-  - cms_posts
-  - announcements
-  - space_users
-  - tasks
-  - events
-```
-
-## 运行并查看效果
-
-![业务伙伴](/lesson2/static/assets/guide_3.png)
+  user:
+    allowCreate: false
+    allowDelete: false
+    allowEdit: false
+    allowRead: true
+    modifyAllRecords: false
+    viewAllRecords: false
+  admin:
+    allowCreate: true
+    allowDelete: true
+    allowEdit: true
+    allowRead: true
+    modifyAllRecords: true
+    viewAllRecords: true

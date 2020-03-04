@@ -1,14 +1,13 @@
-# 业务对象关联
-## 创建合同 object
-在src项目源码中创建一个名为contracts.object.yml文件，
-开头配置以下内容：
-``` bash
 name: contracts
 label: 合同
 icon: contract
-```
-## 添加字段
-``` bash
+enable_files: true
+enable_search: true
+enable_events: true
+enable_tasks: true
+enable_api: true
+enable_chatter: true
+enable_audit: true
 fields:
   name:
     label: 合同名称
@@ -171,12 +170,56 @@ fields:
     sortable: true
     readonly: true
     defaultValue: 0
-```
-## 配置视图：我的合同，所有合同/业务
-``` bash
 list_views:
-	all:
-    label: 所有合同/业务
+  all:
+    label: 所有合同
+    filters: !<tag:yaml.org,2002:js/function> |-
+      function () {
+          return [
+            ["contract_state","<>","terminated"]
+          ];
+      }
+    columns:
+      - field: create_date
+        width: 120
+        wrap: true
+      - field: name
+        width: 280
+        wrap: true
+      - field: company_id
+        width: 120
+      - field: othercompany
+        width: 200
+      - field: amount
+        width: 120
+      - field: contract_type
+        width: 120
+      - field: owner
+        width: 120
+      - field: start_date
+        width: 120
+      - field: end_date
+        width: 120
+      - field: bop
+        width: 120
+    filter_scope: space
+    filter_fields:
+      - contract_type
+      - signed_date
+      - othercompany
+      - contract_state
+    sort:
+      - - create_date
+        - desc
+  recent:
+    label: 最近查看
+    filter_scope: space
+    filters: !<tag:yaml.org,2002:js/function> |-
+      function () {
+          return [
+            ["contract_state","<>","terminated"]
+          ];
+      }
     filter_fields:
       - contract_type
       - signed_date
@@ -187,18 +230,126 @@ list_views:
         - desc
   mine:
     label: 我的合同
-	filter_fields:
+    filter_scope: mine
+    filters: !<tag:yaml.org,2002:js/function> |-
+      function () {
+          return [
+            ["contract_state","<>","terminated"]
+          ];
+      }
+    filter_fields:
       - contract_type
       - signed_date
       - othercompany
       - contract_state
-		sort:
+    sort:
       - - create_date
         - desc
-```
-## 定义权限：普通用户只能查看自己的合同，合同管理员和系统管理员可以查看所有的合同
-``` bash
-user:
+  contract_payments:
+    label: 付款合同
+    filter_scope: space
+    filters: !<tag:yaml.org,2002:js/function> |-
+      function () {
+          return [
+            ["bop","=","付款合同"],
+            ["contract_state","<>","terminated"]
+          ];
+      }
+    columns:
+      - field: create_date
+        width: 120
+      - field: company_id
+        width: 220
+        wrap: true
+      - field: "no"
+        width: 150
+        wrap: true
+      - field: name
+        width: 200
+        wrap: true
+      - field: contract_state
+        width: 120
+        wrap: true
+      - field: othercompany
+        width: 220
+        wrap: true
+      - field: owner
+        width: 120
+        wrap: true
+      - field: amount
+        width: 120
+        wrap: true
+      - field: unfor_invoicing_amount
+        width: 120
+        wrap: true
+      - field: unpaid_amount
+        width: 120
+        wrap: true
+      - field: for_invoicing_amount
+        width: 120
+        wrap: true
+      - field: paid_amount
+        width: 120
+        wrap: true
+    filter_fields:
+      - contract_type
+      - signed_date
+      - othercompany
+      - contract_state
+    sort:
+      - - create_date
+        - desc
+  contract_receipts:
+    label: 收款合同
+    filter_scope: space
+    filters: !<tag:yaml.org,2002:js/function> |-
+      function () {
+          return [
+            ["bop","=","收款合同"],
+            ["contract_state","<>","terminated"]
+          ];
+      }
+    columns:
+      - field: create_date
+        width: 120
+      - field: name
+        width: 220
+        wrap: true
+      - field: contract_state
+        width: 120
+        wrap: true
+      - field: othercompany
+        width: 220
+        wrap: true
+      - field: owner
+        width: 120
+        wrap: true
+      - field: amount
+        width: 120
+        wrap: true
+      - field: unfor_invoicing_amount
+        width: 120
+        wrap: true
+      - field: unreceived_amount
+        width: 120
+        wrap: true
+      - field: for_invoicing_amount
+        width: 120
+        wrap: true
+      - field: received_amount
+        width: 120
+        wrap: true
+    filter_fields:
+      - contract_type
+      - signed_date
+      - othercompany
+      - contract_state
+    sort:
+      - - create_date
+        - desc
+
+permission_set:
+  user:
     allowCreate: true
     allowDelete: true
     allowEdit: true
@@ -219,4 +370,3 @@ user:
     allowRead: true
     modifyAllRecords: true
     viewAllRecords: true
-```
