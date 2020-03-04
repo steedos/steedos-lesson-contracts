@@ -154,13 +154,6 @@ fields:
 list_views:
 	all:
     label: 所有合同/业务
-    filters: !<tag:yaml.org,2002:js/function> |-
-      function () {
-			    return [
-					  ["contract_state","<>","terminated"]
-				  ];
-			}
-   	filter_scope: space
     filter_fields:
       - contract_type
       - signed_date
@@ -171,14 +164,7 @@ list_views:
         - desc
   mine:
     label: 我的合同
-   	filter_scope: mine
-		filters: !<tag:yaml.org,2002:js/function> |-
-			function () {
-			    return [
-					  ["contract_state","<>","terminated"]
-				  ];
-			}
-		filter_fields:
+	filter_fields:
       - contract_type
       - signed_date
       - othercompany
