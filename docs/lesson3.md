@@ -15,14 +15,6 @@ fields:
     label: 合同编号
     sortable: true
     filterable: true
-   serial_number:
-    type: autonumber
-    formula: "{0}"
-    label: 流水号
-    filterable: true
-    omit: true
-    readonly: true
-    searchable: true
   create_date:
     label: 登记日期
     type: date
@@ -47,70 +39,12 @@ fields:
     multiple: true
     filters: [["status", "eq", "2"]]
     create: false
-  project:
-    type: lookup
-    label: 项目
-    filterable: true
-    reference_to: account_project
-    create: false
-  contract_type:
-  	type: lookup
-    relatedList: true
-   	label: 分类
-   	reference_to: contract_types
-   	required: true
-   	create: false
- 	business_category:
-   	type: lookup
-   	label: 业务分类
-   	reference_to: business_categories
-   	filters: [["enablestate", "eq", "2"]]
-   	create: false
   name:
  		label: 合同/业务名称
  		type: text
    	required: true
    	searchable: true
    	index: true
-  is_bidding:
- 	  type: select
- 		label: 是否招投标
- 		options:
- 		  - label: 已公开招投标
-        value: 已公开招投标
-      - label: 已邀请招投标
-        value: 已邀请招投标
-      - label: 已询价比价
- 			  value: 已询价比价
-      - label: 无需招投标
-        value: 无需招投标
-    allowedValues:
-      - 已公开招投标
-      - 已邀请招投标
-      - 已询价比价
-      - 无需招投标
-  bop:
- 	 type: select
-   label: 收支类别
-   options:
-    - label: 付款业务
-      value: 付款业务
-    - label: 收款业务
-      value: 收款业务
-    - label: 收付款业务
-      value: 收付款业务
-    - label: 无金额业务
-      value: 无金额业务
-   is_approve_by_boss:
-    label: 董事长审批
-    type: select
-    options:
-      - label: 是
-      	value: 是
-      - label: 否
-      	value: 否
-    readonly: true
-    omit: true
   applicant:
     label: 经办人
     type: lookup
@@ -138,26 +72,6 @@ fields:
     create: false
     searchable: true
     reference_to: department
-    depend_on:
-      - company_id
-    optionsFunction: !!js/function |
-      function(values) {
-        var _options = [];
-        var companyId = values.company_id;
-        if (!companyId) {
-          return;
-        }
-        if(!_.isString(companyId)) {
-          companyId = values.company_id._id
-        }
-        var departments = Creator.odata.query('department', {$filter: "(company_id eq '" + companyId + "')", $select: 'name'}, true);
-       	if (departments){
-          _.each(departments, function(item){
-            _options.push({value: item._id, label: item.name});
-       		})
-        }
-        return _options;
-      }
   created_by:
     label: 创建人
     sortable: true
@@ -206,43 +120,11 @@ fields:
     group: 合同主要内容
    	reference_to: currency
     create: false
-  amount_type:
-    type: select
-    label: 金额类型
-    group: 合同主要内容
-    defaultValue: 固定
-   	options:
-      - label: 固定
-      	value: 固定
-      - label: 浮动
-        value: 浮动
-      - label: 无金额
-      	value: 无金额
-    allowedValues:
-      - 固定
-      - 浮动
-      - 无金额
   	amount_description:
     	label: 金额说明
     	type: textarea
     	group: 合同主要内容
     	is_wide: true
-  	receive_payment_type:
-    	type: select
-    	label: 收/付款方式
-    	group: 合同主要内容
-    	defaultValue: 一次性
-    	options:
-      	- label: 一次性
-      		value: 一次性
-      	- label: 分期
-      	  value: 分期
-      	- label: 无金额
-      		value: 无金额
-    	allowedValues:
-      	- 一次性
-      	- 分期
-      	- 无金额
   	deadline:
     	type: text
     	group: 合同主要内容
@@ -261,171 +143,11 @@ fields:
     	label: 说明
     	group: 合同主要内容
     	type: textarea
-  	contract_state:
-    	type: select
-    	label: 合同状态
-    	group: 合同主要内容
-    	searchable: true
-    	options:
-        - label: 审批中
-      		value: pending
-      	- label: 已核准
-      		value: approved
-      	- label: 已驳回
-      		value: rejected
-      	- label: 已取消
-      		value: terminated
-      	- label: 已签订
-      		value: signed
-      	- label: 已归档
-      		value: archived
-      	- label: 已作废
-      		value: droped
-      	- label: 已完成
-      		value: completed
-  	contract_fulfillment_state:
-    	type: select
-    	label: 合同履行状态
-    	group: 合同主要内容
-    	searchable: true
-    	options:
-      	- label: 履行中
-      		value: 履行中
-      	- label: 履行完
-      		value: 履行完
-      	- label: 已取消
-      		value: 已取消
   	stamp_state:
     	type: text
     	label: 盖章状态
     	group: 盖章信息
     	searchable: true
-  	paid_amount:
-    	label: 已支付总金额
-    	type: currency
-    	group: 合同收付款信息
-    	scale: 2
-    	sortable: true
-    	readonly: true
-    	defaultValue: 0
-  	unpaid_amount:
-    	label: 未支付付款总金额
-    	group: 合同收付款信息
-    	type: currency
-    	scale: 2
-    	sortable: true
-    	readonly: true
-    	defaultValue: 0
-  	receipted_amount:
-    	label: 已收票总金额
-    	type: currency
-    	group: 合同收付款信息
-    	scale: 2
-    	sortable: true
-    	readonly: true
-    	defaultValue: 0
-  	unclaimed_votes_amount:
-    	label: 未收票总金额
-    	type: currency
-    	group: 合同收付款信息
-    	scale: 2
-    	sortable: true
-    	readonly: true
-    	defaultValue: 0
-  	received_amount:
-    	label: 已收款总金额
-    	group: 合同收付款信息
-    	type: currency
-    	scale: 2
-    	sortable: true
-    	readonly: true
-    	defaultValue: 0
-  	unreceived_amount:
-    	label: 未收款总金额
-    	group: 合同收付款信息
-    	type: currency
-    	scale: 2
-    	sortable: true
-    	readonly: true
-    	defaultValue: 0
-  	for_invoicing_amount:
-    	label: 申请开票总金额
-    	group: 合同收付款信息
-    	type: currency
-    	scale: 2
-    	sortable: true
-    	readonly: true
-    	defaultValue: 0
-  	unfor_invoicing_amount:
-    	label: 未申请开票总金额
-    	group: 合同收付款信息
-    	type: currency
-    	scale: 2
-    	sortable: true
-    	readonly: true
-    	defaultValue: 0
-  	change_before:
-    	label: 变更前合同
-    	type: lookup
-    	group: 合同变更
-    	reference_to: contracts
-    	readonly: true
-    	create: false
-  	change_after:
-    	label: 变更后合同
-    	type: lookup
-    	group: 合同变更
-    	reference_to: contracts
-    	readonly: true
-    	create: false
-  	contract_action_type:
-    	label: 合同类型
-    	type: select
-    	group: 合同变更
-    	options:
-        - label: 新增
-      		value: 新增
-      	- label: 变更
-      		value: 变更
-    	readonly: true
-  		omit: true
-  	change_reason:
-    	label: 变更原因
-    	type: text
-    	group: 合同变更
-    	readonly: true
-  	archive_date:
-  		label: 备案文件日期
-    	type: date
-  		group: 合同备案信息
-    	sortable: true
-  		filterable: true
-  		name: archive_date
-  	original_file:
-      label: 备案文件类型
-    	type: select
-   		group: 合同备案信息
-  		options:
-        - label: 原件
-      		value: 原件
-      	- label: 扫描件
-      		value: 扫描件
-      	- label: 复印件
-      		value: 复印件
-    	name: original_file
-  	revocation_date:
-  		label: 废止日期
-  		type: date
-  		group: 合同备案信息
-  		sortable: true
- 			filterable: true
-  		name: revocation_date
-  	synced_from_odoo:
-   		label: 从odoo导入
-  		type: boolean
-  		omit: true
-  		hidden: true
-  		readonly: true
 ```
 ## 设置视图：我的合同，所有合同
 ``` bash
@@ -438,34 +160,6 @@ list_views:
 					  ["contract_state","<>","terminated"]
 				  ];
 			}
-		columns:
-			- field: create_date
-        width: 120
-       	wrap: true
-      - field: company_id
-        width: 200
-        wrap: true
-      - field: othercompany
-        width: 200
-        wrap: true
-      - field: name
-        width: 280
-        wrap: true
-      - field: amount
-        width: 120
-        wrap: true
-      - field: currency_type
-       	width: 120
-        wrap: true
-      - field: contract_type
-        width: 120
-        wrap: true
-      - field: "no"
-        width: 120
-        wrap: true
-      - field: serial_number
-        width: 120
-       	wrap: true
    	filter_scope: space
     filter_fields:
       - contract_type
@@ -484,34 +178,6 @@ list_views:
 					  ["contract_state","<>","terminated"]
 				  ];
 			}
-		columns:
-			- field: create_date
-			  width: 120
-			  wrap: true
-			- field: company_id
-       	width: 200
-       	wrap: true
-      - field: othercompany
-        width: 200
-        wrap: true
-      - field: name
-        width: 280
-        wrap: true
-      - field: amount
-        width: 120
-        wrap: true
-      - field: currency_type
-        width: 120
-        wrap: true
-      - field: contract_type
-        width: 120
-        wrap: true
-      - field: "no"
-        width: 120
-        wrap: true
-      - field: serial_number
-        width: 120
-        wrap: true
 		filter_fields:
       - contract_type
       - signed_date
