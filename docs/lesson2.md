@@ -27,13 +27,6 @@ fields:
     label: 统一社会信用代码
     inlineHelpText: '系统按照此字段校验重复，避免重复录入单位信息。'
     required: true
-  owner:
-    label: 责任人
-    omit: false
-    readonly: false
-    hidden: false
-    type: lookup
-    reference_to: users
   priority:
     label: 优先级
     type: select
@@ -88,18 +81,13 @@ permission_set:
 		allowDelete: true
 		allowEdit: true
 		allowRead: true
-		modifyAllRecords: false
-		viewAllRecords: true
-	admin:
-		allowCreate: true
-		allowDelete: true
-		allowEdit: true
-		allowRead: true
 		modifyAllRecords: true
 		viewAllRecords: true
 ```
 
 ## 在 app中配置新创建的业务对象
+
+修改src下的oa.app.yml,增加：业务伙伴 accounts
 ```bash
 objects: 
   - instances
