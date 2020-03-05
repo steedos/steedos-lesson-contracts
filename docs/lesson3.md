@@ -1,5 +1,7 @@
 # 业务对象关联
+
 ## 创建合同 object
+
 在src项目源码中创建一个名为contracts.object.yml文件，
 开头配置以下内容：
 ``` bash
@@ -8,6 +10,7 @@ label: 合同
 icon: contract
 ```
 ## 添加字段
+
 ``` bash
 fields:
   name:
@@ -155,6 +158,7 @@ fields:
     defaultValue: 0
 ```
 ## 配置视图：我的合同、所有合同
+
 ``` bash
 list_views:
   all:
@@ -202,7 +206,9 @@ list_views:
         - desc
 ```
 ## 定义权限：普通用户只能查看自己的合同，合同管理员和系统管理员可以查看所有的合同
+
 ``` bash
+
 permission_set:
   user:
     allowCreate: true
@@ -230,6 +236,7 @@ permission_set:
 ## 在华炎办公app中去掉 业务伙伴
 
 修改src下的oa.app.yml,增加：业务伙伴 accounts
+
 ```bash
 sort: 100
 objects: 
@@ -251,6 +258,7 @@ mobile_objects:
 ## 新建合同app，配置包括的业务对象
 
 src下，增加文件contract.app.yml,增加：业务伙伴 accounts、合同 contracts
+
 ```bash
 _id: contracts
 name: 合同
@@ -265,5 +273,3 @@ mobile_objects:
   - contracts
   - accounts
 ```
-
-## 关联到业务伙伴
