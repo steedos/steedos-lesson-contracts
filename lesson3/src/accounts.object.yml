@@ -24,13 +24,6 @@ fields:
     label: 统一社会信用代码
     inlineHelpText: '系统按照此字段校验重复，避免重复录入单位信息。'
     required: true
-  owner:
-    label: 责任人
-    omit: false
-    readonly: false
-    hidden: false
-    type: lookup
-    reference_to: users
   priority:
     label: 优先级
     type: select
@@ -71,31 +64,8 @@ list_views:
       - owner
       - modified
     filter_scope: space
-  recent:
-    label: 最近查看
-    columns:
-      - name
-      - priority
-      - owner
-      - modified
-    filter_scope: space
-  mine:
-    label: 我的业务伙伴
-    columns:
-      - name
-      - priority
-      - owner
-      - modified
-    filter_scope: mine
 permission_set:
   user:
-    allowCreate: false
-    allowDelete: false
-    allowEdit: false
-    allowRead: true
-    modifyAllRecords: false
-    viewAllRecords: false
-  admin:
     allowCreate: true
     allowDelete: true
     allowEdit: true

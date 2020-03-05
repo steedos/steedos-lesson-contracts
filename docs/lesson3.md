@@ -16,6 +16,7 @@ fields:
     required: true
     searchable: true
     index: true
+    is_wide: true
   "no":
     type: autonumber
     formula: "{YYYY}-{000} "
@@ -24,15 +25,6 @@ fields:
     filterable: true
     omit: true
     readonly: true
-  company_id:
-    label: 我方单位
-    required: false
-    omit: false
-    hidden: false
-    sortable: true
-    type: lookup
-    relatedList: true
-    reference_to: company
   othercompany:
     type: lookup
     relatedList: true
@@ -41,11 +33,18 @@ fields:
     reference_to: accounts
     required: true
   contract_type:
-    type: lookup
-    relatedList: true
+    type: select
     label: 分类
-    reference_to: contract_types
     required: true
+    options:
+      - label: 产品销售
+        value: 产品销售
+      - label: 开发服务
+        value: 开发服务
+      - label: 项目采购
+        value: 项目采购
+      - label: 其他采购
+        value: 其他采购
   create_date:
     label: 登记日期
     type: date
@@ -65,23 +64,6 @@ fields:
       - 收款合同
     required: true
     defaultValue: 收款合同
-  owner:
-    label: 执行人
-    sortable: true
-    type: lookup
-    reference_to: users
-    omit: false
-    hidden: false
-  created_by:
-    label: 创建人
-    sortable: true
-    type: lookup
-    reference_to: users
-  modified_by:
-    label: 修改人
-    sortable: true
-    type: lookup
-    reference_to: users
   subject:
     type: textarea
     label: 合同主要内容
@@ -172,11 +154,33 @@ fields:
     readonly: true
     defaultValue: 0
 ```
-## 配置视图：我的合同，所有合同/业务
+## 配置视图：我的合同、所有合同
 ``` bash
 list_views:
-	all:
-    label: 所有合同/业务
+  all:
+    label: 所有合同
+    columns:
+      - field: create_date
+        width: 120
+        wrap: true
+      - field: name
+        width: 280
+        wrap: true
+      - field: othercompany
+        width: 200
+      - field: amount
+        width: 120
+      - field: contract_type
+        width: 120
+      - field: bop
+        width: 120
+      - field: start_date
+        width: 120
+      - field: end_date
+        width: 120
+      - field: owner
+        width: 120
+    filter_scope: space
     filter_fields:
       - contract_type
       - signed_date
@@ -187,18 +191,20 @@ list_views:
         - desc
   mine:
     label: 我的合同
-	filter_fields:
+    filter_scope: mine
+    filter_fields:
       - contract_type
       - signed_date
       - othercompany
       - contract_state
-		sort:
+    sort:
       - - create_date
         - desc
 ```
 ## 定义权限：普通用户只能查看自己的合同，合同管理员和系统管理员可以查看所有的合同
 ``` bash
-user:
+permission_set:
+  user:
     allowCreate: true
     allowDelete: true
     allowEdit: true
@@ -220,3 +226,44 @@ user:
     modifyAllRecords: true
     viewAllRecords: true
 ```
+
+## 在华炎办公app中去掉 业务伙伴
+
+修改src下的oa.app.yml,增加：业务伙伴 accounts
+```bash
+sort: 100
+objects: 
+  - instances
+  - cms_posts
+  - announcements
+  - space_users
+  - tasks
+  - events
+mobile_objects: 
+  - instances
+  - cms_posts
+  - announcements
+  - space_users
+  - tasks
+  - events
+```
+
+## 新建合同app，配置包括的业务对象
+
+src下，增加文件contract.app.yml,增加：业务伙伴 accounts、合同 contracts
+```bash
+_id: contracts
+name: 合同
+description: 合同、业务伙伴。
+icon_slds: approval
+is_creator: true
+sort: 200
+objects: 
+  - contracts
+  - accounts
+mobile_objects:
+  - contracts
+  - accounts
+```
+
+## 关联到业务伙伴
