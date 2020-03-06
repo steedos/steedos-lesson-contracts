@@ -5,9 +5,9 @@
 在src项目源码中创建一个名为accounts.object.yml文件，
 开头配置以下内容：
 ```bash
-name: contracts
+name: accounts
 lable: 业务伙伴
-icon: cantract
+icon: accounts
 ```
 ## 添加字段：名称、电话、邮箱...
 配置相关字段:
