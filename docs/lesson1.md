@@ -11,7 +11,7 @@
 创建一个名为lesson1的空项目
 
 ```bash
-create steedos lesson1
+steedos create lesson1
 ```
 
 ## 安装依赖包
