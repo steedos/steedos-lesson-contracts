@@ -235,7 +235,7 @@ permission_set:
 
 ## 在华炎办公app中去掉 业务伙伴
 
-修改src下的oa.app.yml,增加：业务伙伴 accounts
+修改src下的oa.app.yml,删除：业务伙伴 accounts
 
 ```bash
 sort: 100
@@ -276,4 +276,4 @@ mobile_objects:
 
 ## 重启服务运行并查看效果
 
-![合同应用](/lesson3/static/assets/guide_4.png)
+![合同应用](/website/static/assets/guide_4.png)

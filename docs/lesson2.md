@@ -101,4 +101,4 @@ objects:
 
 ## 运行并查看效果
 
-![业务伙伴](/lesson2/static/assets/guide_3.png)
+![业务伙伴](/website/static/assets/guide_3.png)

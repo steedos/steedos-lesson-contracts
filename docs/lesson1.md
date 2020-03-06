@@ -39,6 +39,6 @@ yarn start
 
 ## 简单浏览一下
 
-![PC界面展示](/lesson1/static/assets/guide_1.png)
+![PC界面展示](/website/static/assets/guide_1.png)
 
-![移动端界面展示](/lesson1/static/assets/guide_2.png)
+![移动端界面展示](/website/static/assets/guide_2.png)
