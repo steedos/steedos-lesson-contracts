@@ -6,7 +6,7 @@
 
 ## 创建Steedos项目，并提交到Github
 
-创建Steedos项目前，请[安装开发环境(Windows)](https://developer.steedos.com/docs/developer/guide)或者[安装开发环境(Mac)](https://developer.steedos.com/docs/developer/mac)
+创建Steedos项目前，请[安装开发环境(Windows)](https://developer.steedos.com/docs/developer/guide)，[安装开发环境(Mac)](https://developer.steedos.com/docs/developer/mac)及[安装开发环境(Linux)](https://developer.steedos.com/docs/developer/linux)
 
 创建一个名为lesson1的空项目
 
