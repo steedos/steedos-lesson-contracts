@@ -32,12 +32,12 @@ yarn start
 
 使用浏览器访问地址 [http://127.0.0.1:5000/](http://127.0.0.1:5000/) ，即可访问用户界面。
 第一次使用时，数据库为空。点击“注册”，用邮箱注册一个新账户。具体操作步骤，请参照[审批王-注册企业账户](https://developer.steedos.com/docs/workflow/help/guide)
-![注册](/website/static/assets/注册.png)
+![注册](/website/static/assets/注册)
 
 ## 创建一个企业
 
 首次登入系统后，输入企业名称，即可完成企业的创建。
-![创建企业](/website/static/assets/注册2.png)
+![创建企业](/website/static/assets/注册2)
 
 ## 简单浏览一下
 
