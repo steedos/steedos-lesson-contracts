@@ -37,7 +37,7 @@ yarn start
 ## 创建一个企业
 
 首次登入系统后，输入企业名称，即可完成企业的创建。
-![创建企业](/website/static/assets/注册2)
+![创建企业](https://github.com/steedos/steedos-website/blob/master/website/static/assets/注册2.png)
 
 ## 简单浏览一下
 
