@@ -8,7 +8,7 @@
 
 创建Steedos项目前，请[安装开发环境](https://developer.steedos.com/docs/developer/guide)
 
-创建一个名为lesson1的空项目
+创建一个名为text的空项目
 
 ```bash
 npx steedos create text
