@@ -17,14 +17,14 @@ npx steedos create lesson1
 ## 安装依赖包
 
 ```bash
-cd lesson1
+cd text
 yarn
 ```
 
 ## 运行空项目
 终端执行以下代码：
 ```bash
-cd lesson1 
+cd text
 yarn start
 ```
 
