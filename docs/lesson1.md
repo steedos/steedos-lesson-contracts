@@ -20,7 +20,6 @@ yarn
 ## 运行空项目
 终端执行以下代码：
 ```bash
-cd test
 yarn start
 ```
 
