@@ -40,6 +40,6 @@ yarn start
 
 ## 浏览系统主页面
 
-![PC界面展示](/website/static/assets/主页面.png)
+![PC界面展示](https://github.com/steedos/steedos-website/blob/master/website/static/assets/主页面.png)
 
 ![移动端界面展示](/website/static/assets/guide_2.png)
