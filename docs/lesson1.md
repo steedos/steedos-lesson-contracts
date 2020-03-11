@@ -22,6 +22,10 @@ yarn
 ```bash
 yarn start
 ```
+## 文件夹结构
+项目创建后，您的项目文件夹内容如图如下：
+
+![文件夹结构](https://github.com/steedos/steedos-website/blob/master/website/static/assets/文件夹结构1.png)
 
 ## 注册一个新账户
 
