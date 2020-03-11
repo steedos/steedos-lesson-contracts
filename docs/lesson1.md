@@ -1,10 +1,6 @@
 # lesson1  创建项目
 
-## 创建GitHub项目
-
-注册GitHub，完成后登录，并创建新项目，例如steedos-lesson-contracts
-
-## 创建Steedos项目，并提交到Github
+## 创建Steedos项目
 
 创建Steedos项目前，请[安装开发环境](https://developer.steedos.com/docs/developer/guide)
 
@@ -39,7 +35,7 @@ yarn start
 首次登入系统后，输入企业名称，即可完成企业的创建。
 ![创建企业](https://github.com/steedos/steedos-website/blob/master/website/static/assets/注册2.png)
 
-## 简单浏览一下
+## 浏览系统主页面
 
 ![PC界面展示](/website/static/assets/guide_1.png)
 
