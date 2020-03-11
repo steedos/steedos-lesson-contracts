@@ -11,20 +11,20 @@
 创建一个名为text的空项目
 
 ```bash
-npx steedos create text
+npx steedos create test
 ```
 
 ## 安装依赖包
 
 ```bash
-cd text
+cd test
 yarn
 ```
 
 ## 运行空项目
 终端执行以下代码：
 ```bash
-cd text
+cd test
 yarn start
 ```
 
