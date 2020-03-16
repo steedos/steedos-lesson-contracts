@@ -10,3 +10,7 @@
 [lesson3  业务对象关联](/docs/lesson3.md)
 
 [lesson4  触发器](/docs/lesson4.md)
+
+[lesson5  操作按钮](/docs/lesson5.md)
+
+[lesson6  报表](/docs/lesson6.md)
