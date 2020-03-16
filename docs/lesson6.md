@@ -30,7 +30,7 @@ mobile_objects:
 
 ![合同报表](/website/static/assets/guide_5.png)
 
-## 运行并查看效果
+## 完成后查看效果
 
 ![二维报表](/website/static/assets/guide_6.png)
 
