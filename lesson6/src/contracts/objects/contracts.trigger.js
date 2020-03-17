@@ -4,7 +4,7 @@ module.exports = {
   listenTo: 'contracts',
 
   afterInsert: async function () {
-    await contractManager.caculateAmount(this.id);
+    await contractManager.caculateAmount(this.doc._id);
   },
 
   afterUpdate: async function () {
