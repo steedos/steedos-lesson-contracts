@@ -133,28 +133,24 @@ fields:
     type: number
     scale: 2
     sortable: true
-    readonly: true
     defaultValue: 0
   unpaid_amount:
     label: 未支付付款总金额
     type: number
     scale: 2
     sortable: true
-    readonly: true
     defaultValue: 0
   received_amount:
     label: 已收款总金额
     type: number
     scale: 2
     sortable: true
-    readonly: true
     defaultValue: 0
   unreceived_amount:
     label: 未收款总金额
     type: number
     scale: 2
     sortable: true
-    readonly: true
     defaultValue: 0
 ```
 ## 配置视图：我的合同、所有合同
