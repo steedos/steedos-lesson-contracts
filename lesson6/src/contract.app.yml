@@ -6,6 +6,7 @@ is_creator: true
 objects: 
   - contracts
   - accounts
+  - reports
 mobile_objects:
   - contracts
   - accounts
