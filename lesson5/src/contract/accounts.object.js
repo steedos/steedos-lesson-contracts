@@ -29,7 +29,7 @@ Creator.Objects.accounts.methods = {
           subject: 'Hello',
           html: '<b>Hello World！我是华炎开发</b>'
         });
-        res.status(200).send();
+        res.status(200).send({});
       } catch (error) {
         res.status(400).send({
           'error': {
@@ -45,6 +45,10 @@ Creator.Objects.accounts.actions = {
   sendEmail: {
       label: "发送邮件",
       visible: function (object_name, record_id, record_permissions) {
+        var email = Creator.getObjectRecord(object_name, record_id).email;
+        if (!email) {
+          return false;
+        } 
         return true;
       },
       on: "record",
@@ -64,14 +68,13 @@ Creator.Objects.accounts.actions = {
           },
           success: function (data) {
             $("body").removeClass("loading");
-            toastr.success("操作已成功！");
+            toastr.success("已发送邮件！");
           },
           error: function (XMLHttpRequest, textStatus, errorThrown) {
             $("body").removeClass("loading");
-            toastr.error(XMLHttpRequest.responseJSON);
+            toastr.error("发送邮件失败："+ errorThrown);
           }
         });
-  
-      }
-    },
-};
+      },
+  }
+}
