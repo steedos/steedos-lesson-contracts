@@ -1,0 +1,12 @@
+_id: contracts
+name: 合同
+description: 合同、业务伙伴。
+icon_slds: approval
+is_creator: true
+objects: 
+  - contracts
+  - accounts
+  - reports
+mobile_objects:
+  - contracts
+  - accounts
