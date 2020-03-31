@@ -93,10 +93,12 @@ fields:
     label: 备注
     type: textarea
     is_wide: true
-  contract_state:
+  instance_state:
     type: select
     label: 合同状态
     searchable: true
+    omit: false
+    hidden: false
     options:
       - label: 审批中
         value: pending
