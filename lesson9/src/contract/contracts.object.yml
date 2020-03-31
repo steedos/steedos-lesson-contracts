@@ -8,6 +8,7 @@ enable_tasks: true
 enable_api: true
 enable_chatter: true
 enable_audit: true
+enable_workflow: true
 fields:
   name:
     label: 合同名称
@@ -92,10 +93,12 @@ fields:
     label: 备注
     type: textarea
     is_wide: true
-  contract_state:
+  instance_state:
     type: select
     label: 合同状态
     searchable: true
+    omit: false
+    hidden: false
     options:
       - label: 审批中
         value: pending

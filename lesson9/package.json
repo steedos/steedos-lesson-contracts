@@ -1,5 +1,5 @@
 {
-    "name": "lesson1",
+    "name": "lesson9",
     "version": "0.0.1",
     "description": "",
     "main": "server.js",
@@ -13,8 +13,8 @@
     "dependencies": {
         "dotenv-flow": "^3.1.0",
         "@steedos/steedos-plugin-workflow": "^2.0.3",
-        "@steedos/accounts": "^1.10.11",
-        "steedos-server": "^1.16.5"
+        "@steedos/accounts": "^1.11.9",
+        "steedos-server": "^1.18.12"
     },
     "devDependencies": {
         "nodemon": "^1.19.1"
