@@ -153,6 +153,12 @@ fields:
     sortable: true
     readonly: true
     defaultValue: 0
+  company_id:
+    label: 所属单位
+    required: true
+    omit: false
+    hidden: false
+    sortable: true
 list_views:
   all:
     label: 所有合同
@@ -177,8 +183,11 @@ list_views:
         width: 120
       - field: owner
         width: 120
+      - field: company_id
+        width: 120
     filter_scope: space
     filter_fields:
+      - company_id
       - contract_type
       - signed_date
       - othercompany
@@ -190,6 +199,7 @@ list_views:
     label: 我的合同
     filter_scope: mine
     filter_fields:
+      - company_id
       - contract_type
       - signed_date
       - othercompany
@@ -203,6 +213,8 @@ permission_set:
     allowDelete: true
     allowEdit: true
     allowRead: true
+    viewCompanyRecords: false
+    modifyCompanyRecords: false
     modifyAllRecords: false
     viewAllRecords: false 
   contract_manager:
@@ -210,12 +222,16 @@ permission_set:
     allowEdit: true
     allowDelete: true
     allowRead: true
-    modifyAllRecords: true
-    viewAllRecords: true
+    viewCompanyRecords: true
+    modifyCompanyRecords: true
+    modifyAllRecords: false
+    viewAllRecords: false
   admin:
     allowCreate: true
     allowDelete: true
     allowEdit: true
     allowRead: true
+    viewCompanyRecords: true
+    modifyCompanyRecords: true
     modifyAllRecords: true
     viewAllRecords: true

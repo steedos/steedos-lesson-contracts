@@ -55,6 +55,12 @@ fields:
     type: textarea
     is_wide: true
     name: description
+  company_id:
+    label: 所属单位
+    required: true
+    omit: false
+    hidden: false
+    sortable: true
 list_views:
   all:
     label: 所有业务伙伴
@@ -62,13 +68,34 @@ list_views:
       - name
       - priority
       - owner
+      - company_id
       - modified
     filter_scope: space
 permission_set:
   user:
+    allowCreate: false
+    allowDelete: false
+    allowEdit: false
+    allowRead: true
+    viewCompanyRecords: true
+    modifyCompanyRecords: false
+    modifyAllRecords: false
+    viewAllRecords: false 
+  contract_manager:
+    allowCreate: true
+    allowEdit: true
+    allowDelete: true
+    allowRead: true
+    viewCompanyRecords: true
+    modifyCompanyRecords: true
+    modifyAllRecords: false
+    viewAllRecords: false
+  admin:
     allowCreate: true
     allowDelete: true
     allowEdit: true
     allowRead: true
+    viewCompanyRecords: true
+    modifyCompanyRecords: true
     modifyAllRecords: true
     viewAllRecords: true
