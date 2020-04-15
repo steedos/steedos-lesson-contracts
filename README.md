@@ -1,6 +1,6 @@
 # 如何快速开发随需定制的管理系统？
 
-华炎魔方是[开源低代码开发工具](https://github.com/steedos/steedos-platform)，基于NodeJS开发，使用yml文件定义[业务对象](/developer/object/)，使用 javascript 语法编写前端和后端业务逻辑脚本。系统内核（业务对象管理、账户管理、权限管理、流程引擎、报表引擎）需运行于 MongoDB 数据库，开发人员可以定义[第三方数据源](/developer/datasource/)，连接SQL Server、Oracle等现有的业务系统数据库。
+华炎魔方是[开源低代码开发工具](https://github.com/steedos/steedos-platform)，基于NodeJS开发，使用yml文件定义[业务对象](https://www.steedos.com/developer/object/)，使用 javascript 语法编写前端和后端业务逻辑脚本。系统内核（业务对象管理、账户管理、权限管理、流程引擎、报表引擎）需运行于 MongoDB 数据库，开发人员可以定义[第三方数据源](https://www.steedos.com/developer/datasource/)，连接SQL Server、Oracle等现有的业务系统数据库。
 
 本教程以合同管理为例，指导你如何使用华炎魔方创建项目，配置业务对象，编程脚本，处理业务部门的各种个性化需求。您开发的新业务系统可以部署在本地运行。
 
