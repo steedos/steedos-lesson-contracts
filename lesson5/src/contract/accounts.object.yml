@@ -64,6 +64,10 @@ list_views:
       - owner
       - modified
     filter_scope: space
+actions: 
+  sendEmail: 
+    label: 发送邮件
+    on: record
 permission_set:
   user:
     allowCreate: true
