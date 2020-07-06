@@ -1,7 +1,8 @@
 name: contract_payments
 label: 付款计划
 icon: orders
-enable_follow: true
+enable_files: true
+enable_search: true
 fields:
   name:
     label: 名称
