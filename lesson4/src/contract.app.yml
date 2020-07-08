@@ -1,11 +1,12 @@
 _id: contracts
 name: 合同
-description: 合同、业务伙伴。
+description: 合同、付款合同。
 icon_slds: approval
 is_creator: true
+sort: 200
 objects: 
   - contracts
-  - accounts
+  - contract_payments
 mobile_objects:
   - contracts
-  - accounts
+  - contract_payments
