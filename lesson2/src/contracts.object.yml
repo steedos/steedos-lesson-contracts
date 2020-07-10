@@ -16,9 +16,9 @@ fields:
     searchable: true
     index: true
     is_wide: true
-  "no":
+  no:
     type: autonumber
-    formula: "{YYYY}-{000} "
+    formula: "{YYYY}-{000}"
     label: 合同编号
     sortable: true
     filterable: true
@@ -153,6 +153,8 @@ list_views:
       - field: create_date
         width: 120
         wrap: true
+      - field: no
+        width: 120
       - field: name
         width: 280
         wrap: true
