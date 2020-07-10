@@ -17,20 +17,18 @@ fields:
     searchable: true
     index: true
     is_wide: true
-  "no":
+  no:
     type: autonumber
-    formula: "{YYYY}-{000} "
+    formula: "{YYYY}-{000}"
     label: 合同编号
     sortable: true
     filterable: true
     omit: true
     readonly: true
   othercompany:
-    type: lookup
-    relatedList: true
+    type: text
     label: 业务伙伴
     searchable: true
-    reference_to: accounts
     required: true
   contract_type:
     type: select
@@ -134,7 +132,7 @@ fields:
     sortable: true
     defaultValue: 0
   unpaid_amount:
-    label: 未支付付款总金额
+    label: 未支付总金额
     type: number
     scale: 2
     sortable: true
@@ -166,6 +164,8 @@ list_views:
       - field: create_date
         width: 120
         wrap: true
+      - field: no
+        width: 120
       - field: name
         width: 280
         wrap: true
